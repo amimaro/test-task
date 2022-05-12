@@ -1,19 +1,26 @@
-import React, { useReducer } from 'react';
-import AppContext from './AppContext';
-import AppReducer from './AppReducer';
-import Actions from '../contextActions';
-import { Transaction } from '../../services/TransactionsService';
+import { useEffect, useReducer, useState } from "react";
+import AppContext from "./AppContext";
+import AppReducer from "./AppReducer";
+import Actions from "../contextActions";
+import {
+  Transaction,
+  TransactionsService,
+} from "../../services/TransactionsService";
+import { IAppState, initAppState } from "./IAppState";
 
-export interface IAppState {
-  transactions: Array<Transaction>;
-}
-
-export const initAppState: IAppState = {
-  transactions: [],
-};
+const transactionsService = new TransactionsService(initAppState);
 
 const AppState = (props: any) => {
   const [state, dispatch] = useReducer(AppReducer, initAppState);
+  const [transactions, setTransactions] = useState<Array<Transaction>>([]);
+
+  useEffect(() => {
+    (async () => {
+      const transactionRes = await transactionsService.getListOfTransactions();
+      setTransactions(transactionRes);
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state]);
 
   // Set app state
   const setState = (newState: IAppState) => {
@@ -22,18 +29,20 @@ const AppState = (props: any) => {
       payload: newState,
     });
   };
-  
-  // TODO: Complete the addTransaction method
-  const addTransaction = (transaction: Transaction) => {
 
-  }
+  // TODO: Complete the addTransaction method
+  const addTransaction = async (transaction: Transaction) => {
+    await transactionsService.addTransaction(transaction);
+    setState({
+      transactions: [...state.transactions, transaction],
+    });
+  };
 
   return (
     <AppContext.Provider
       value={{
-        state,
-        setState,
         addTransaction,
+        transactions,
       }}
     >
       {props.children}

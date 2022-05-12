@@ -1,17 +1,14 @@
-import { createContext } from 'react';
-import { Transaction } from '../../services/TransactionsService';
-import { IAppState, initAppState } from './AppState';
+import { createContext } from "react";
+import { Transaction } from "../../services/TransactionsService";
 
 type ContextType = {
-  state: IAppState,
-  addTransaction: (transaction: Transaction) => void
-  setState: (state: IAppState) => void
-}
+  addTransaction: (transaction: Transaction) => void;
+  transactions: Array<Transaction>;
+};
 
 const AppContext: React.Context<ContextType> = createContext<ContextType>({
-  state: initAppState,
   addTransaction: () => {},
-  setState: () => {}
+  transactions: [],
 });
 
 export default AppContext;

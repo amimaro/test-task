@@ -1,5 +1,5 @@
 import { Transaction } from "../services/TransactionsService";
-import { IAppState } from "./background/AppState";
+import { IAppState } from "./background/IAppState";
 
 enum Actions {
   SET_TRANSACTIONS = 'SET_TRANSACTIONS',

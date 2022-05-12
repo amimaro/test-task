@@ -1,18 +1,18 @@
-import Actions, { SetStateAction, SetTransactionAction } from '../contextActions';
-import { IAppState } from './AppState';
+import Actions, {
+  SetStateAction,
+  SetTransactionAction,
+} from "../contextActions";
+import { IAppState } from "./IAppState";
 
 type AppAction = SetTransactionAction | SetStateAction;
 
-const appReducer = (
-  state: IAppState,
-  action: AppAction
-): IAppState => {
+const appReducer = (state: IAppState, action: AppAction): IAppState => {
   switch (action.type) {
     case Actions.SET_STATE:
       return {
         ...state,
-        ...action.payload
-      }
+        ...action.payload,
+      };
     case Actions.SET_TRANSACTIONS:
       return {
         ...state,
