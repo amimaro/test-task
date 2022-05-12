@@ -5,5 +5,5 @@
 html,
 body,
 #root {
-  @apply w-full h-full;
+  @apply w-full h-full max-h-[100vh];
 }

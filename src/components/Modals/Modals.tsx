@@ -1,11 +1,11 @@
 import SendModal from "./SendModal";
-import SendSuccessModal from "./SendSuccesModal";
+import SendSuccessModal from "./SendSuccessModal";
 
 export default function Modals() {
   return (
-    <div>
+    <>
       <SendModal />
       <SendSuccessModal />
-    </div>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import Layout from "../Layout";
 
 export function ModalFactory({
   isOpen,
@@ -25,7 +26,7 @@ export function ModalFactory({
 
   const Modal = (
     <div className="fixed top-0 left-0 z-50 w-full h-full bg-white">
-      {children}
+      <Layout>{children}</Layout>
     </div>
   );
 
