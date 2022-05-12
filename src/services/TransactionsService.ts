@@ -5,10 +5,11 @@ import { BaseService } from "./infrastructure/BaseService";
  * Value is of type `number` for simplification
  */
 export interface Transaction {
-  id: number;
+  id: string;
   to: string;
   from: string;
   value: number;
+  date?: string;
 }
 
 export interface TransactionsServiceState {

@@ -1,9 +1,12 @@
+import AccountBalance from "../components/AccountBalance";
+import AccountInfo from "../components/AccountInfo";
 import TransactionList from "../components/TransactionList";
 
 export default function Dashboard() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    <div className="">
+      <AccountInfo />
+      <AccountBalance />
       <TransactionList />
     </div>
   );
