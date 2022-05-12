@@ -6,7 +6,7 @@ import {
   Transaction,
   TransactionsService,
 } from "../../services/TransactionsService";
-import { IAppState, initAppState } from "./IAppState";
+import { IAppState, IModalState, initAppState } from "./IAppState";
 
 const transactionsService = new TransactionsService(initAppState);
 
@@ -34,6 +34,7 @@ const AppState = (props: any) => {
   const addTransaction = async (transaction: Transaction) => {
     await transactionsService.addTransaction(transaction);
     setState({
+      ...state,
       transactions: [...state.transactions, transaction],
     });
   };
@@ -43,6 +44,9 @@ const AppState = (props: any) => {
       value={{
         addTransaction,
         transactions,
+        modalState: state.modal,
+        setModalState: (modalState: IModalState) =>
+          setState({ ...state, modal: modalState }),
       }}
     >
       {props.children}

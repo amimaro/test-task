@@ -4,7 +4,7 @@ import TransactionList from "../components/TransactionList";
 
 export default function Dashboard() {
   return (
-    <div className="">
+    <div className="flex flex-col gap-4">
       <AccountInfo />
       <AccountBalance />
       <TransactionList />

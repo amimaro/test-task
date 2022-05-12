@@ -21,7 +21,7 @@ export default function TransactionItem({
         <div className="flex flex-col flex-grow">
           <p className="font-semibold">Send Ether</p>
           <p className="text-xs text-slate-400">
-            {format(new Date(transaction.date!), "MM/dd/yyyy H:MM")}
+            {format(new Date(transaction.date!), "MM/dd/yyyy HH:m")}
           </p>
         </div>
         <div className="flex flex-col text-right">
