@@ -1,3 +1,4 @@
+import Layout from "./components/Layout";
 import Modals from "./components/Modals/Modals";
 import AppState from "./context/background/AppState";
 import Dashboard from "./pages/Dashboard";
@@ -5,7 +6,9 @@ import Dashboard from "./pages/Dashboard";
 const App = () => {
   return (
     <AppState>
-      <Dashboard />
+      <Layout>
+        <Dashboard />
+      </Layout>
       <Modals />
     </AppState>
   );

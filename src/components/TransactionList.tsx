@@ -7,7 +7,7 @@ export default function TransactionList() {
   const { transactions } = useContext(AppContext);
 
   return (
-    <div>
+    <div className="overflow-x-auto h-full flex flex-col gap-2">
       {reverseArray(transactions).map((transaction) => (
         <TransactionItem key={transaction.id} transaction={transaction} />
       ))}
